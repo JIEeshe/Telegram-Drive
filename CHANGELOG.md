@@ -1,6 +1,25 @@
 # Changelog
 
-## [1.0.4] - 2026-02-13
+## [1.0.5] - 2026-03-27
+
+### Security
+
+- **Content Security Policy** - Added CSP rules to `tauri.conf.json` preventing XSS attacks in the webview. Scoped to allow Telegram API connections and local streaming server only.
+
+### Code Quality
+
+- **Merged Context Directories** - Consolidated `contexts/` into `context/` (single directory for all React contexts)
+- **Fixed Double Mutex Lock** - Fixed `bandwidth.rs` `check_and_reset()` which dropped then re-acquired the lock unnecessarily
+- **Replaced `println!`** - Changed remaining `println!` to `log::info!` for consistent logging
+- **Removed Dead Code** - Deleted empty `menu.rs`, stale `commands.rs.bak` (23KB), and `test_upload.txt`
+- **Removed Stale Comment** - Cleaned up indecisive developer comment in `lib.rs`
+
+### Repository Hygiene
+
+- **Updated `.gitignore`** - Added patterns for build artifacts (`.dmg`, `.exe`, `.msi`, `.AppImage`), `.rs.bak`, test files, and `.npm-cache`
+
+---
+
 
 ### Bug Fixes
 

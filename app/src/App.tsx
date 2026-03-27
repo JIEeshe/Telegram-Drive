@@ -10,7 +10,7 @@ import "./App.css";
 import { Toaster } from "sonner";
 import { ConfirmProvider } from "./context/ConfirmContext";
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
-import { DropZoneProvider } from "./contexts/DropZoneContext";
+import { DropZoneProvider } from "./context/DropZoneContext";
 
 const queryClient = new QueryClient();
 

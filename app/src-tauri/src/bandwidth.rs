@@ -56,14 +56,11 @@ impl BandwidthManager {
         let today = Local::now().format("%Y-%m-%d").to_string();
         let mut stats = self.stats.lock().unwrap();
         if stats.date != today {
-            println!("[Bandwidth] New day detected. Resetting stats. Old date: {}, New date: {}", stats.date, today);
+            log::info!("[Bandwidth] New day detected. Resetting stats. Old date: {}, New date: {}", stats.date, today);
             stats.date = today;
             stats.up_bytes = 0;
             stats.down_bytes = 0;
-            // Save immediately
-            drop(stats); // Release lock before calling save if save uses lock (it doesn't, but self.save_locked needs the data)
-            // Actually save_locked takes &stats, so we keep lock.
-            if let Ok(json) = serde_json::to_string(&self.stats.lock().unwrap().clone()) { let _ = fs::write(&self.file_path, json); }
+            self.save_locked(&stats);
         }
     }
 

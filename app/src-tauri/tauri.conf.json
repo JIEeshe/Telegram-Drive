@@ -9,7 +9,7 @@
     }
   },
   "productName": "Telegram Drive",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "identifier": "com.cameronamer.telegramdrive",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -29,7 +29,7 @@
       }
     ],
     "security": {
-      "csp": null,
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://127.0.0.1:14200 https://*.telegram.org https://149.154.167.50; img-src 'self' data: blob: https:; media-src 'self' http://127.0.0.1:14200 blob:",
       "capabilities": [
         "default"
       ]
